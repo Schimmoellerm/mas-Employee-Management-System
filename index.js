@@ -12,4 +12,26 @@ const connection = mysql.createConnection({
 connection.connect((err) => {
     if (err) throw err;
     console.log(`connected as id ${connection.threadId}\n`);
+    startSystem();
 });
+
+const startSystem = () => {
+   inquirer
+    .prompt([
+        {
+            type: "list",
+            message: "Employee Management System",
+            name: "option",
+            choices: [
+                "View Departments", 
+                "View Roles", 
+                "View Employees", 
+                "Add Department", 
+                "Add Role,", 
+                "Add Employee",
+                "Update Employee Role",
+                "Shutdown Employee Management System",
+            ] 
+        }
+    ])
+}
