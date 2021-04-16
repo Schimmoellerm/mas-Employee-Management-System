@@ -39,7 +39,7 @@ const startSystem = () => {
             viewDepartment();
         }else if (answers.option === 'View Roles') {
             console.log("Started View Roles")
-            startSystem();
+            viewRoles();
         }else if (answers.option === 'View Employees') {
             console.log("Started View Employees")
             startSystem();
@@ -64,7 +64,7 @@ const startSystem = () => {
 
 //View Departments
 const viewDepartment = () => {
-    console.log("Now viewing all departments")
+    console.log("Now viewing all departments.")
     connection.query("SELECT * FROM departmentTable", (err, res) => {
        if (err) throw err;
        console.table(res);
@@ -73,9 +73,17 @@ const viewDepartment = () => {
 }
 
 //View Roles
-const viewRo
+const viewRoles = () => {
+    console.log("Now viewing all roles.")
+    connection.query("SELECT * FROM roleTable INNER JOIN departmentTable ON roleTable.department_id = departmentTable.id", (err, res) => {
+        if (err) throw err;
+       console.table(res);
+       startSystem(); 
+    })
+}
 
 //View Employees
+const 
 
 //Add Department
 
