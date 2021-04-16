@@ -36,7 +36,7 @@ const startSystem = () => {
     ]).then(answers => {
         if(answers.option === 'View Departments') {
             console.log("Started View Departments")
-            startSystem();
+            viewDepartment();
         }else if (answers.option === 'View Roles') {
             console.log("Started View Roles")
             startSystem();
@@ -61,3 +61,26 @@ const startSystem = () => {
         }
     })
 }
+
+//View Departments
+const viewDepartment = () => {
+    console.log("Now viewing all departments")
+    connection.query("SELECT * FROM departmentTable", (err, res) => {
+       if (err) throw err;
+       console.table(res);
+       startSystem(); 
+    })
+}
+
+//View Roles
+const viewRo
+
+//View Employees
+
+//Add Department
+
+//Add Role
+
+//Add Employee
+
+//Update Employee Role
