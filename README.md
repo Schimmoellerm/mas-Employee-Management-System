@@ -15,7 +15,7 @@ Please refer to the video located in the Media folder for a walkthrough of this 
 5. Choosing add department will prompt the user with questions to create a new department.
 6. Choosing add role will prompt the user with questions to create a new role and add a salary.
 7. Choosing add an employee will prompt the user with a number of questions to add a new employee.
-8. choosing to update an employee will allow the user to change the employees role.
+8. Choosing to update an employee will allow the user to change the employees role.
 9. Choosing to end the program will shut down the connection and take the user back to the starting line in terminal.
 
 ## Built With
