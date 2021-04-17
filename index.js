@@ -45,7 +45,7 @@ const startSystem = () => {
             viewEmployees();
         }else if (answers.option === 'Add Department') {
             console.log("Started Add Department")
-            startSystem();
+            addDepartment();
         }else if (answers.option === 'Add Role') {
             console.log("Started Add Role")
             startSystem();
@@ -93,9 +93,26 @@ const viewEmployees = () => {
 }
 
 //Add Department
+const addDepartment = () => {
+    console.log("Adding department...")
+    inquirer
+    .prompt([
+        {
+            type: "input",
+            name: "department",
+            message: "Name of the Department you wish to add?"
+        }
+    ]).then(function (input) {
+        connection.query("INSERT INTO departmentTable SET ?", {name: input.department})
+        console.log("Created department.")
+        viewDepartment();   
+    })
+}
 
 //Add Role
 
 //Add Employee
 
 //Update Employee Role
+
+//Add system shutdown
