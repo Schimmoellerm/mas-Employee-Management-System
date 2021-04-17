@@ -51,7 +51,7 @@ const startSystem = () => {
             addRole();
         }else if (answers.option === 'Add Employee') {
             console.log("Started Add Employee")
-            startSystem();
+            addEmployee();
         }else if (answers.option === 'Update Employee Role') {
             console.log("Started Update Employee Role")
             startSystem();
@@ -140,7 +140,40 @@ const addRole = () => {
 }
 
 //Add Employee
-
+const addEmployee = () => {
+    console.log("Adding Employee")
+    inquirer.prompt([
+        {
+            type: "input",
+            name: "firstName",
+            message: "First name of new employee?"
+        },
+        {
+            type: "input",
+            name: "lastName",
+            message: "Last name of new employee?"
+        },
+        {
+            type: "input",
+            name: "roleID",
+            message: "Role number of new Employee?"
+        },
+        {
+            type: "input",
+            name: "managerID",
+            message: "ID number of manager?"
+        },
+    ]).then(function (input) {
+        connection.query("INSERT INTO employeeTable SET ?", {
+            first_name: input.firstName,
+            last_name: input.lastName,
+            role_id: input.roleID,
+            manager_id: input.managerID
+        })
+        console.log("Employee Added!");
+        viewEmployees();
+    })
+}
 //Update Employee Role
 
 //Add system shutdown
