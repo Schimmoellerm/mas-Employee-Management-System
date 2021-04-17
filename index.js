@@ -11,7 +11,7 @@ const connection = mysql.createConnection({
 
 connection.connect((err) => {
     if (err) throw err;
-    console.log(`connected as id ${connection.threadId}\n`);
+    console.log(`connected as id ${connection.threadId}`);
     startSystem();
 });
 
@@ -48,7 +48,7 @@ const startSystem = () => {
             addDepartment();
         }else if (answers.option === 'Add Role') {
             console.log("Started Add Role")
-            startSystem();
+            addRole();
         }else if (answers.option === 'Add Employee') {
             console.log("Started Add Employee")
             startSystem();
@@ -110,6 +110,34 @@ const addDepartment = () => {
 }
 
 //Add Role
+const addRole = () => {
+    console.log("Adding department...")
+    inquirer.prompt([
+        {
+            type: "input",
+            name: "role",
+            message: "Name of the role you wish to add?"
+        },
+        {
+            type: "input",
+            name: "salary",
+            message: "What is the base salary for this role?"
+        },
+        {
+            type: "input",
+            name: "deptID",
+            message: "What is the department number for this role?"
+        }
+    ]).then(function (input) {
+        connection.query("INSERT INTO roleTable SET ?", {
+            title: input.role,
+            salary: input.salary,
+            department_id: input.deptID
+        })
+        console.log("Created Role");
+        viewRoles();
+    })
+}
 
 //Add Employee
 
