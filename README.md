@@ -3,10 +3,12 @@ Management System using mySQL and Node.js
 
 This node application will act as an employee management system. It will allow the user to add employees, add roles, and add departments. It will also allow the user to update employees. Other functionality of this project includes the viewing of tables generated with mySQL to show employees, roles, and departments.
 
+![ApplicationEXP](./Media/Application_Example.gif)
+
 ## Instructions
 
 Please refer to the video located in the Media folder for a walkthrough of this application.
-[Video](Media/ApplicationWalkthrough.webm)
+[Video](./Media/ApplicationWalkthrough.webm)
 
 1. After starting the application with the `node index.js` command in terminal, the user is presented with a number of options.
 2. Choosing to view employees will show a table with all employees, their roles and salarys.
