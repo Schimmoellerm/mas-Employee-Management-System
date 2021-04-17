@@ -54,10 +54,10 @@ const startSystem = () => {
             addEmployee();
         }else if (answers.option === 'Update Employee Role') {
             console.log("Started Update Employee Role")
-            startSystem();
+            updateEmployee();
         }else if (answers.option === 'Shutdown Employee Management System') {
-            console.log("Started Shutdown Employee Management System")
-            startSystem();//needs to go to a shutdown system function
+            console.log("End Employee Management System")
+            connection.end();
         }
     })
 }
@@ -175,5 +175,32 @@ const addEmployee = () => {
     })
 }
 //Update Employee Role
-
-//Add system shutdown
+const updateEmployee = () => {
+    console.log("Updateing Employee...");
+    inquirer.prompt([
+        {
+            type: "input",
+            name: "employee",
+            message: "What is the ID# of the employee you wish to update?"
+        },
+        {
+            type: "input",
+            name: "role",
+            message: "What is the new Role number of the employee?"
+        }
+    ]).then(function (input) {
+        connection.query("UPDATE employeeTable SET ? WHERE ?", [{
+            role_id: input.role
+        }, 
+        {
+            id: input.employee
+        }], function(err, data) {
+                if (err) {
+                    console.log(err)
+                    return;
+                }else
+                console.log("Employee role updated", data);
+                viewEmployees();
+        })       
+    }) 
+}
