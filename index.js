@@ -85,7 +85,7 @@ const viewRoles = () => {
 //View Employees
 const viewEmployees = () => {
     console.log("Now viewing employees.");
-    connection.query("SELECT * FROM employeeTable INNER JOIN roleTable ON employeeTable.role_id = roleTable.id INNER JOIN departmentTable ON roleTable.department_id = departmentTable.id", (err, res) => {
+    connection.query("SELECT employeeTable.id, employeeTable.first_name, employeeTable.last_name, roleTable.title, roleTable.salary, departmentTable.name FROM employeeTable INNER JOIN roleTable ON employeeTable.role_id = roleTable.id INNER JOIN departmentTable ON roleTable.department_id = departmentTable.id", (err, res) => {
        if (err) throw err;
        console.table(res);
        startSystem(); 
