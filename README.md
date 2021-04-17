@@ -6,7 +6,7 @@ This node application will act as an employee management system. It will allow t
 ## Instructions
 
 Please refer to the video located in the Media folder for a walkthrough of this application.
-[Video](???)
+[Video](Media/ApplicationWalkthrough.webm)
 
 1. After starting the application with the `node index.js` command in terminal, the user is presented with a number of options.
 2. Choosing to view employees will show a table with all employees, their roles and salarys.
